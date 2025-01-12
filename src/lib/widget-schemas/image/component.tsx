@@ -1,3 +1,4 @@
+import { ImageIcon } from 'lucide-react'
 import { ImageWidgetState } from '.'
 
 interface ImageWidgetProps {
@@ -6,6 +7,15 @@ interface ImageWidgetProps {
 
 export function ImageWidget(props: ImageWidgetProps) {
   const { state } = props
+
+  if (!state.src) {
+    return (
+      <div className='aspect-video object-cover flex justify-center items-center w-full bg-muted'>
+        <ImageIcon className='size-8' />
+      </div>
+    )
+  }
+
   return (
     <img
       src={state.src}

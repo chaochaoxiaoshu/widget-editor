@@ -7,7 +7,7 @@ export function Preview() {
 
   return (
     <main className='flex justify-center items-center w-full h-full bg-muted'>
-      <div className='relative flex flex-col min-w-[300px] aspect-[9/20] h-[95vh] bg-white rounded-3xl overflow-hidden'>
+      <div className='relative flex flex-col min-w-[300px] aspect-[9/20] h-[95vh] bg-background rounded-3xl overflow-hidden'>
         <div className='flex-none flex justify-center items-center h-[12%] pt-[10%] border-b'>
           <span className='font-medium'>预览</span>
         </div>
@@ -25,7 +25,10 @@ export function Preview() {
                 onCopy={() => editor.copyWidget(widget)}
                 onDelete={() => editor.deleteWidget(widget)}
               >
-                <schema.Component state={widget.state} />
+                <schema.Component
+                  key={`${widget.id}-${JSON.stringify(widget.state)}`}
+                  state={widget.state}
+                />
               </WidgetPreviewWrapper>
             )
           })}

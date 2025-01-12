@@ -10,5 +10,13 @@ export type DInputProps = Omit<
 export function DInput(props: DInputProps) {
   const { onChange, ...otherProps } = props
 
-  return <Input {...otherProps} onChange={(e) => onChange?.(e.target.value)} />
+  return (
+    <Input
+      {...otherProps}
+      onChange={(e) => {
+        e.stopPropagation()
+        onChange?.(e.target.value)
+      }}
+    />
+  )
 }

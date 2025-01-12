@@ -14,7 +14,13 @@ export function DButton(props: DButtonProps) {
   const editor = useCurrentEditor()
 
   return (
-    <Button {...otherProps} onClick={() => onClick?.(editor)}>
+    <Button
+      {...otherProps}
+      onClick={(e) => {
+        e.stopPropagation()
+        onClick?.(editor)
+      }}
+    >
       {children}
     </Button>
   )
